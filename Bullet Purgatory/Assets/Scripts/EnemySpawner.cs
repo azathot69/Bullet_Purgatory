@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    //Variables
+
+    //How many enemies to spawn
+    public int spawnNumber;
+
+    //How fast enemies spawn
+    public float spawnRate;
+
+    //Current wave
+    private int waves = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +26,6 @@ public class EnemySpawner : MonoBehaviour
     {
         
     }
+
+    //Functions
 }

@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     //Rate of bullets fired
     public float fireRate;
 
+    //Determine if player can shoot
+    private bool canShoot = true;
+
     //Number of lives player has
     public int lives;
 
@@ -98,5 +101,21 @@ public class PlayerMovement : MonoBehaviour
             //Don't do Anything
             Debug.Log("no mo' bombs!");
         }
+    }
+
+    private void ShootBullet()
+    {
+        if (canShoot)
+        {
+            //Allow bullet to shoot
+        }
+    }
+
+    private IEnumerator Shooting(float fireRate)
+    {
+        canShoot = false;
+        //Fire Projectile
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 }
