@@ -41,6 +41,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Player collision
+    public void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            default:
+                Debug.Log("Something Hit the player!");
+                break;
+
+            case "Bullet":
+                Debug.Log("A Bullet hit the player!!");
+                Respawn();
+                break;
+        }
+    }
 
     //Functions
     private void Movement()
@@ -68,6 +82,21 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             //Go to game over screen
+        }
+    }
+
+    //Fire a bomb, clears the screen
+    private void FireBomb()
+    {
+        if (bombs > 0)
+        {
+            //Fire Bombs
+            bombs--;
+        }
+        else
+        {
+            //Don't do Anything
+            Debug.Log("no mo' bombs!");
         }
     }
 }
