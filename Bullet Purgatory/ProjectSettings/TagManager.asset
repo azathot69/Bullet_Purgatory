@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player Ship
+  - Enemy 1
+  - Enemy 2
+  - Enemy 3
+  - Boss
+  - Enemy Projectile
+  - Player Projectile
+  - Shield Pick Up
   layers:
   - Default
   - TransparentFX
