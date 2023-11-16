@@ -12,6 +12,8 @@ TagManager:
   - Enemy Projectile
   - Player Projectile
   - Shield Pick Up
+  - Damage Pick Up
+  - Portal
   layers:
   - Default
   - TransparentFX
