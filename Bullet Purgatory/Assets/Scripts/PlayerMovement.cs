@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Player fires bullet
-        if (Input.GetKeyPushed(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Debug.Log("Player Shoots");
         }
