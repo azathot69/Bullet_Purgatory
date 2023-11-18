@@ -136,6 +136,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Player fires bullet
+        if (Input.GetKeyPushed(KeyCode.L))
+        {
+            Debug.Log("Player Shoots");
+        }
 
         //Player shoots bomb
     }
