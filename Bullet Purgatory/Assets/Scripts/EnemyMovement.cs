@@ -9,12 +9,27 @@ using UnityEngine;
 /// </summary>
 public class EnemyMovement : MonoBehaviour
 {
-    //Variables
 
-    //How much HP the enemy has before dying
+    //Bullet Spawner Variables
+    enum SpawnerType { Straight, Spin }
+
+    [Header("Bullet Atributes")]
+    public GameObject bullet;
+    public float bulletLife = 1f;
+    public float bulletSpeed = 1f;
+
+    [Header("Spawner Atributes")]
+    [SerializeField] private SpawnerType spawnerType;
+    [SerializeField] private float firingRate = 1f;
+
+    private GameObject spawnedBullet;
+    private float timer = 0f;
+
+
+    //Enemy Variables
+
+
     public int health;
-
-    //How fast the enemy moves
     public float speed;
 
 
@@ -27,15 +42,45 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+
+        switch (spawnerType)
+        {
+            case SpawnerType.Spin:
+                transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
+                break;
+        }
+
+        //Fire Bullet
+        if (timer >= firingRate)
+        {
+            Fire();
+            timer = 0;
+        }
+
         //HP Depleted
         if (health <= 0)
         {
             Despawn();
         }
+
+        
         
     }
 
     //Functions
+    //Spawn Bullets
+    private void Fire()
+    {
+        if (bullet)
+        {
+            spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            spawnedBullet.GetComponent<Bullet>().speed = bulletSpeed;
+            spawnedBullet.GetComponent<Bullet>().bulletLife = bulletLife;
+            spawnedBullet.transform.rotation = transform.rotation;
+
+        }
+    }
 
     //Despawns itself
     private void Despawn()
