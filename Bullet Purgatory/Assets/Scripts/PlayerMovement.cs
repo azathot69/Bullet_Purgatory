@@ -26,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
     //Number of bombs player has
     public int bombs;
 
+    public float minX = -52f;
+    public float maxX = 52f;
+    public float minY = -44f;
+    public float maxY = 44f;
+
     //Position where the player respawns from death
     Vector3 spawnPoint;
 
@@ -63,12 +68,72 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         //Player goes up
+        if (Input.GetKey(KeyCode.W) || Input.GetKey("up"))
+        {
+
+            //Moves the object over to the right w/ Vector3.right by speed (m/s)
+            //Multiply that by Time.deltaTime to convert m/frame to m/s
+            if (transform.position.y >= maxY)
+            {
+
+            }
+            else
+            {
+                transform.position += Vector3.up * speed * Time.deltaTime;
+            }
+
+        }
 
         //Player goes down
+        if (Input.GetKey(KeyCode.S) || Input.GetKey("down"))
+        {
+
+            //Moves the object over to the right w/ Vector3.right by speed (m/s)
+            //Multiply that by Time.deltaTime to convert m/frame to m/s
+            if (transform.position.y <= minY)
+            {
+
+            }
+            else
+            {
+                transform.position += Vector3.down * speed * Time.deltaTime;
+            }
+
+        }
 
         //Player goes left
+        if (Input.GetKey(KeyCode.A) || Input.GetKey("left"))
+        {
+
+            //Moves the object over to the right w/ Vector3.right by speed (m/s)
+            //Multiply that by Time.deltaTime to convert m/frame to m/s
+            if (transform.position.x <= minX)
+            {
+
+            }
+            else
+            {
+                transform.position += Vector3.left * speed * Time.deltaTime;
+            }
+
+        }
 
         //Player goes right
+        if (Input.GetKey(KeyCode.D) || Input.GetKey("right"))
+        {
+
+            //Moves the object over to the right w/ Vector3.right by speed (m/s)
+            //Multiply that by Time.deltaTime to convert m/frame to m/s
+            if (transform.position.x >= maxX)
+            {
+
+            }
+            else
+            {
+                transform.position += Vector3.right * speed * Time.deltaTime;
+            }
+
+        }
 
         //Player fires bullet
 
