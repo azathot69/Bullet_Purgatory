@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Bullet Atributes")]
     public GameObject bullet;
+    public Transform player;
     public float bulletLife = 1f;
     public float bulletSpeed = 1f;
 
@@ -24,6 +25,11 @@ public class EnemyMovement : MonoBehaviour
 
     private GameObject spawnedBullet;
     private float timer = 0f;
+    private float playerPositionX;
+    private float playerPositionY;
+    private float playerPositionZ;
+    private Vector2 playerPosition;
+    private Vector2 enemyPosition;
 
 
     //Enemy Variables
@@ -42,12 +48,30 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Loaction Update
+        /*
+        playerPositionX = player.transform.position.x;
+        playerPositionY = player.transform.position.y;
+        playerPositionZ = player.transform.position.z;
+        */
+        enemyPosition = transform.position;
+        playerPosition = player.transform.position;
+
+        Vector2 fireDirection = enemyPosition - playerPosition;
+
+        float angle = Mathf.Atan2(fireDirection.y, fireDirection.x) * Mathf.Rad2Deg - 90f;
+
         timer += Time.deltaTime;
 
         switch (spawnerType)
         {
             case SpawnerType.Spin:
                 transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
+                break;
+
+            case SpawnerType.Straight:
+                transform.eulerAngles = new Vector3(0f, 0f, angle - 90f);
+                
                 break;
         }
 
@@ -72,6 +96,7 @@ public class EnemyMovement : MonoBehaviour
     //Spawn Bullets
     private void Fire()
     {
+
         if (bullet)
         {
             spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
