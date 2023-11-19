@@ -84,7 +84,7 @@ public class EnemyMovement : MonoBehaviour
             case SpawnerType.Triad:
                 if (canShoot)
                 {
-
+                    StartCoroutine(TriadShot(firingRate));
                 }
                 break;
 
@@ -141,6 +141,7 @@ public class EnemyMovement : MonoBehaviour
         float bulletDirXPos = playerPosition.x;
         float bulletDirYPos = playerPosition.z;
 
+        //Main Bullet
         Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
         Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
 
@@ -148,6 +149,44 @@ public class EnemyMovement : MonoBehaviour
 
         tmpObj.GetComponent<Bullet>().bulletLife = bulletLife;
         tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+
+
+    }
+
+    private void Triad()
+    {
+        Vector3 fireDirection = startPosition - playerPosition;
+
+        float bulletDirXPos = playerPosition.x;
+        float bulletDirYPos = playerPosition.z;
+
+        //Main Bullet
+        Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
+        Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
+
+        GameObject tmpObjOne = Instantiate(bullet, startPosition, Quaternion.identity);
+
+        tmpObjOne.GetComponent<Bullet>().bulletLife = bulletLife;
+        tmpObjOne.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+
+        //Second Bullet
+        Vector3 bulletVectorTwo = new Vector3(bulletDirXPos - 30, bulletDirYPos, 0);
+        Vector3 bulletMoveDirectionTwo = (bulletVectorTwo - startPosition).normalized * bulletSpeed;
+
+        GameObject tmpObjTwo = Instantiate(bullet, startPosition, Quaternion.identity);
+
+        tmpObjTwo.GetComponent<Bullet>().bulletLife = bulletLife;
+        tmpObjTwo.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirectionTwo.x, 0, bulletMoveDirectionTwo.y);
+
+        //Third Bullet
+        Vector3 bulletVectorThree = new Vector3(bulletDirXPos + 30, bulletDirYPos, 0);
+        Vector3 bulletMoveDirectionThree = (bulletVectorThree - startPosition).normalized * bulletSpeed;
+
+        GameObject tmpObjThree = Instantiate(bullet, startPosition, Quaternion.identity);
+
+        tmpObjThree.GetComponent<Bullet>().bulletLife = bulletLife;
+        tmpObjThree.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirectionThree.x, 0, bulletMoveDirectionThree.y);
+
     }
 
     //Despawns itself
@@ -171,6 +210,14 @@ public class EnemyMovement : MonoBehaviour
     {
         canShoot = false;
         Aim();
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
+    }
+
+    private IEnumerator TriadShot(float fireRate)
+    {
+        canShoot = false;
+        Triad();
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
