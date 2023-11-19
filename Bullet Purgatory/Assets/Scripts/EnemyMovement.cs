@@ -93,7 +93,7 @@ public class EnemyMovement : MonoBehaviour
                 {
                     transform.eulerAngles = new Vector3(0f, 0f, 0f);
                 }
-                Debug.Log("Angle: " + transform.eulerAngles);
+                //Debug.Log("Angle: " + transform.eulerAngles);
                 FireBullets();
                 break;
 

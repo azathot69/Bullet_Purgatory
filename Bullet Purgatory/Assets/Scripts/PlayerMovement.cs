@@ -184,6 +184,8 @@ public class PlayerMovement : MonoBehaviour
     {
         canShoot = false;
         //Fire Projectile
+
+
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
