@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
 {
 
     //Bullet Spawner Variables
-    enum SpawnerType { Straight, Spin }
+    enum SpawnerType { Aim, Spin, SpinCounter, Triad , Straight}
 
     [Header("Bullet Atributes")]
     public GameObject bullet;
@@ -37,6 +37,9 @@ public class EnemyMovement : MonoBehaviour
 
     public int health;
     public float speed;
+    public float turnSpeed = 1f;
+    public int turnMax = 90;
+    public float aimDirection = 90f;
 
 
     // Start is called before the first frame update
@@ -66,21 +69,42 @@ public class EnemyMovement : MonoBehaviour
         switch (spawnerType)
         {
             case SpawnerType.Spin:
-                transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 1f);
+                transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + turnSpeed);
+                FireBullets();
+                break;
+
+            case SpawnerType.Aim:
+                transform.eulerAngles = new Vector3(0f, 0f, angle - 90f);
+                FireBullets();
+
+
+                break;
+
+            case SpawnerType.SpinCounter:
+                transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z - turnSpeed);
+                FireBullets();
+                break;
+
+                break;
+
+            case SpawnerType.Triad:
+                transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z - turnSpeed);
+                if (transform.eulerAngles.z >= turnMax)
+                {
+                    transform.eulerAngles = new Vector3(0f, 0f, 0f);
+                }
+                Debug.Log("Angle: " + transform.eulerAngles);
+                FireBullets();
                 break;
 
             case SpawnerType.Straight:
-                transform.eulerAngles = new Vector3(0f, 0f, angle - 90f);
-                
+                transform.eulerAngles = new Vector3(0f, 0f, aimDirection);
+                FireBullets();
                 break;
         }
 
         //Fire Bullet
-        if (timer >= firingRate)
-        {
-            Fire();
-            timer = 0;
-        }
+        
 
         //HP Depleted
         if (health <= 0)
@@ -93,6 +117,25 @@ public class EnemyMovement : MonoBehaviour
     }
 
     //Functions
+    private void FireBullets()
+    {
+        if (timer >= firingRate)
+        {
+            Fire();
+        timer = 0;
+        }
+    }
+
+    private void FireThreeWay()
+    {
+        if (timer >= firingRate)
+        {
+            FireTriad();
+            
+            timer = 0;
+        }
+    }
+
     //Spawn Bullets
     private void Fire()
     {
@@ -103,6 +146,23 @@ public class EnemyMovement : MonoBehaviour
             spawnedBullet.GetComponent<Bullet>().speed = bulletSpeed;
             spawnedBullet.GetComponent<Bullet>().bulletLife = bulletLife;
             spawnedBullet.transform.rotation = transform.rotation;
+
+        }
+    }
+
+    private void FireTriad()
+    {
+
+        if (bullet)
+        {
+            for (int i = 0; i <= 3; i++)
+            {
+                spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                spawnedBullet.GetComponent<Bullet>().speed = bulletSpeed;
+                spawnedBullet.GetComponent<Bullet>().bulletLife = bulletLife;
+                spawnedBullet.transform.rotation = transform.rotation;
+            }
+
 
         }
     }
