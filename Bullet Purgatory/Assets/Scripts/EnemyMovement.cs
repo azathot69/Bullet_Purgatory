@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
 
     //Bullet Spawner Variables
     enum SpawnerType {Burst, Spin, Aim, Triad}
-    enum MoveType {PopIn, SideToSide, GoDown, GoSide }
+    enum MoveType {PopIn, SideToSide, GoDown}
 
     [Header("Bullet Atributes")]
     public GameObject bullet;
@@ -42,15 +42,16 @@ public class EnemyMovement : MonoBehaviour
     public float maxX;
     public float minZ;  //Z Distance before moving other way
     public float maxZ;
-    public bool goingRight; //If going Right
+    public bool movingRight; //If going Right
     public bool retreat;    //If it returns
+    public float startingX;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startingX = transform.position.x;
     }
 
     // Update is called once per frame
@@ -101,24 +102,56 @@ public class EnemyMovement : MonoBehaviour
         switch (moveType)
         {
             default:
-
+                Debug.Log("Uhoh");
                 break;
 
             case MoveType.PopIn:
 
+                //Enemy pops into the scene
+
+                //Remain Montionless
+
+                //Goes back and despawns
+
                 break;
 
             case MoveType.SideToSide:
-
+                if (movingRight)
+                {
+                    //If object is not farther than the starting pos + right travel dis,
+                    // it can move right
+                    if (transform.position.x <= startingX + maxX)
+                    {
+                        transform.position += Vector3.right * speed * Time.deltaTime;
+                    }
+                    else
+                    {
+                        movingRight = false;
+                    }
+                }
+                else
+                {
+                    //If object is not farther than start pos + left travel dist.
+                    // it can move left
+                    if (transform.position.x >= startingX + minX)
+                    {
+                        transform.position += Vector3.left * speed * Time.deltaTime;
+                    }
+                    else
+                    {
+                        //If object goes too far left, move rghtwa
+                        movingRight = true;
+                    }
+                }
                 break;
 
             case MoveType.GoDown:
+                //Go all the way down
 
+                //Despawn
                 break;
 
-            case MoveType.GoSide:
 
-                break;
         }
 
 
