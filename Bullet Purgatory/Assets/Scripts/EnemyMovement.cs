@@ -11,7 +11,8 @@ public class EnemyMovement : MonoBehaviour
 {
 
     //Bullet Spawner Variables
-    enum SpawnerType {Burst, Spin, Aim, Triad, StraightDown}
+    enum SpawnerType {Burst, Spin, Aim, Triad}
+    enum MoveType {PopIn, SideToSide, GoDown, GoSide }
 
     [Header("Bullet Atributes")]
     public GameObject bullet;
@@ -30,15 +31,21 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 playerPosition;
     private Vector3 startPosition;
     private bool canShoot = true;
-
+    public int health;
     
 
+    //Movement Variables
+    [Header("Movement Atributes")]
+    [SerializeField] private MoveType moveType;
+    public float speed; //How fast it moves
+    public float minX;  //X Distance before moving other way
+    public float maxX;
+    public float minZ;  //Z Distance before moving other way
+    public float maxZ;
+    public bool goingRight; //If going Right
+    public bool retreat;    //If it returns
 
-    //Enemy Variables
 
-
-    public int health;
-    public float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -55,22 +62,22 @@ public class EnemyMovement : MonoBehaviour
 
         Vector3 fireDirection = startPosition - playerPosition; //Aim at player
 
-        //float angle = Mathf.Atan2(fireDirection.y, fireDirection.x) * Mathf.Rad2Deg - 90f;
-
         timer += Time.deltaTime;
+
+        //Determine What Type of spawner
         switch (spawnerType)
         {
             case SpawnerType.Burst:
                 if (canShoot)
                 {
-                    StartCoroutine(BurstShot(firingRate));
+                    StartCoroutine(BurstShot(firingRate, bulletNum));
                 }
                 break;
 
             case SpawnerType.Spin:
                 if (canShoot)
                 {
-
+                    StartCoroutine(SpinShot(firingRate, bulletNum));
                 }
                 break;
 
@@ -88,13 +95,30 @@ public class EnemyMovement : MonoBehaviour
                 }
                 break;
 
-            case SpawnerType.StraightDown:
-                if (canShoot)
-                {
 
-                }
+        }
+
+        switch (moveType)
+        {
+            default:
+
                 break;
 
+            case MoveType.PopIn:
+
+                break;
+
+            case MoveType.SideToSide:
+
+                break;
+
+            case MoveType.GoDown:
+
+                break;
+
+            case MoveType.GoSide:
+
+                break;
         }
 
 
@@ -109,8 +133,18 @@ public class EnemyMovement : MonoBehaviour
     }
 
     //Functions
-   private void Burst(int _bulletNum)
+
+    //Despawns itself
+    private void Despawn()
     {
+        gameObject.SetActive(false);
+    }
+
+    //IEnumerators
+    private IEnumerator BurstShot(float fireRate, int _bulletNum)
+    {
+        canShoot = false;
+
         float angleStep = 360f / _bulletNum; //Possible angles
         float angle = 0f;
 
@@ -132,10 +166,15 @@ public class EnemyMovement : MonoBehaviour
 
             angle += angleStep;
         }
+
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 
-    private void Aim()
+    private IEnumerator AimShot(float fireRate)
     {
+        canShoot = false;
+
         Vector3 fireDirection = startPosition - playerPosition;
 
         float bulletDirXPos = playerPosition.x;
@@ -151,10 +190,14 @@ public class EnemyMovement : MonoBehaviour
         tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
 
 
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 
-    private void Triad()
+    private IEnumerator TriadShot(float fireRate)
     {
+        canShoot = false;
+
         Vector3 fireDirection = startPosition - playerPosition;
 
         float bulletDirXPos = playerPosition.x;
@@ -187,38 +230,41 @@ public class EnemyMovement : MonoBehaviour
         tmpObjThree.GetComponent<Bullet>().bulletLife = bulletLife;
         tmpObjThree.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirectionThree.x, 0, bulletMoveDirectionThree.y);
 
-    }
-
-    //Despawns itself
-    private void Despawn()
-    {
-        gameObject.SetActive(false);
-    }
-
-    //IEnumerators
-    private IEnumerator BurstShot(float fireRate)
-    {
-        canShoot = false;
-        Burst(bulletNum);
-
 
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
 
-    private IEnumerator AimShot(float fireRate)
+    private IEnumerator SpinShot(float fireRate, int _bulletNum)
     {
         canShoot = false;
-        Aim();
-        yield return new WaitForSeconds(fireRate);
-        canShoot = true;
-    }
 
-    private IEnumerator TriadShot(float fireRate)
-    {
-        canShoot = false;
-        Triad();
-        yield return new WaitForSeconds(fireRate);
+        float angleStep = 360f / _bulletNum; //Possible angles
+        float angle = 0f;
+
+        for (int i = 0; i <= _bulletNum - 1; i++)
+        {
+            //Direction Calculations
+            float bulletDirXPos = startPosition.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
+            float bulletDirYPos = startPosition.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
+
+            Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
+            Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
+
+            GameObject tmpObj = Instantiate(bullet, startPosition, Quaternion.identity);
+
+            tmpObj.GetComponent<Bullet>().bulletLife = bulletLife;
+            //tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x + playerPosition.x, 0, bulletMoveDirection.y + playerPosition.z); //This makes a cool pattern!
+            tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+
+
+
+            angle = (angle) + angleStep;
+            yield return new WaitForSeconds(firingRate);
+        }
+
+
+        //yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
 

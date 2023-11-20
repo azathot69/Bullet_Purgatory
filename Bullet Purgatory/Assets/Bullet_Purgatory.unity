@@ -376,15 +376,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb27f4e872848664f8007b5be03b99e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3355433189564712464, guid: 9e643c3d34e75074ea5899d29e7ecf76, type: 3}
+  bullet: {fileID: 3355433189564712464, guid: 05b01b84f78d6a8499351fb9af25ad9e, type: 3}
   player: {fileID: 854705197}
   bulletLife: 5
-  bulletNum: 10
+  bulletNum: 7
   bulletSpeed: 15
-  spawnerType: 3
-  firingRate: 0.3
+  spawnerType: 1
+  firingRate: 0.1
   health: 1
+  moveType: 0
   speed: 0
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
+  goingRight: 0
+  retreat: 0
 --- !u!1 &1827370787
 GameObject:
   m_ObjectHideFlags: 0
