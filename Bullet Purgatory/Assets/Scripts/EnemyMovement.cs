@@ -23,15 +23,15 @@ public class EnemyMovement : MonoBehaviour
     private const float radius = 1f; //Find move direction
 
     [Header("Spawner Atributes")]
+    public int health = 1;
     [SerializeField] private SpawnerType spawnerType;
-    [SerializeField] private float firingRate = 1f;
-
+    public float firingRate = 1f;
     private GameObject spawnedBullet;
     private float timer = 0f;
     private Vector3 playerPosition;
     private Vector3 startPosition;
     private bool canShoot = true;
-    public int health;
+
     
 
     //Movement Variables
@@ -61,6 +61,7 @@ public class EnemyMovement : MonoBehaviour
         startPosition = transform.position;
         playerPosition = player.transform.position;
 
+        //Subtracting the 2 positions will have it aimed at that specific spot
         Vector3 fireDirection = startPosition - playerPosition; //Aim at player
 
         timer += Time.deltaTime;
