@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float minX = -52f;
     public float maxX = 52f;
-    public float minZ = -43f;
-    public float maxZ = 8F;
+    public float minY = -44f;
+    public float maxY = 44f;
 
     //Position where the player respawns from death
     Vector3 spawnPoint;
@@ -73,13 +73,13 @@ public class PlayerMovement : MonoBehaviour
 
             //Moves the object over to the right w/ Vector3.right by speed (m/s)
             //Multiply that by Time.deltaTime to convert m/frame to m/s
-            if (transform.position.z >= maxZ)
+            if (transform.position.y >= maxY)
             {
 
             }
             else
             {
-                transform.position += Vector3.forward * speed * Time.deltaTime;
+                transform.position += Vector3.up * speed * Time.deltaTime;
             }
 
         }
@@ -90,13 +90,13 @@ public class PlayerMovement : MonoBehaviour
 
             //Moves the object over to the right w/ Vector3.right by speed (m/s)
             //Multiply that by Time.deltaTime to convert m/frame to m/s
-            if (transform.position.z <= minZ)
+            if (transform.position.y <= minY)
             {
 
             }
             else
             {
-                transform.position -= Vector3.forward * speed * Time.deltaTime;
+                transform.position += Vector3.down * speed * Time.deltaTime;
             }
 
         }
