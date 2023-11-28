@@ -73,13 +73,13 @@ public class PlayerMovement : MonoBehaviour
 
             //Moves the object over to the right w/ Vector3.right by speed (m/s)
             //Multiply that by Time.deltaTime to convert m/frame to m/s
-            if (transform.position.y >= maxY)
+            if (transform.position.z >= maxY)
             {
 
             }
             else
             {
-                transform.position += Vector3.up * speed * Time.deltaTime;
+                transform.position += Vector3.forward * speed * Time.deltaTime;
             }
 
         }
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                transform.position += Vector3.down * speed * Time.deltaTime;
+                transform.position -= Vector3.forward * speed * Time.deltaTime;
             }
 
         }
