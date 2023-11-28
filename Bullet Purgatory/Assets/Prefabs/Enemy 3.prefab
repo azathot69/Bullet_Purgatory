@@ -437,6 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5823321461530034641}
+  - component: {fileID: -7915667641432929141}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy 3
@@ -468,6 +469,35 @@ Transform:
   - {fileID: 829024024085965627}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7915667641432929141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273387681912661905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb27f4e872848664f8007b5be03b99e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 3355433189564712464, guid: 15a5deba2d77bb74e832bbefa703db82, type: 3}
+  player: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+  bulletLife: 1
+  bulletNum: 0
+  bulletSpeed: 1
+  health: 1
+  spawnerType: 3
+  firingRate: 1
+  moveType: 1
+  speed: 0
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
+  movingRight: 0
+  retreat: 0
+  startingX: 0
 --- !u!1 &4677419924385814869
 GameObject:
   m_ObjectHideFlags: 0

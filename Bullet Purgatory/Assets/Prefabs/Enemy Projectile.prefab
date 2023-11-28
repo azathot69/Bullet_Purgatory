@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8389195157013023746}
   - component: {fileID: 2132117126528375813}
   - component: {fileID: -7201052773680949276}
+  - component: {fileID: 2345338262524398972}
   m_Layer: 0
   m_Name: Enemy Projectile
   m_TagString: Enemy Projectile
@@ -28,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2200109930808656728}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -26.31, y: -3e-15, z: -4.04}
   m_LocalScale: {x: 0.25496024, y: 2.219093, z: 0.30392647}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &974663205697491950
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -121,5 +122,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletLife: 1
-  rotation: 0
-  speed: 1
+--- !u!54 &2345338262524398972
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200109930808656728}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
