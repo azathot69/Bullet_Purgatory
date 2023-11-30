@@ -11,10 +11,8 @@ public class EnemyMovement : MonoBehaviour
 {
 
     //Bullet Spawner Variables
-
-    enum SpawnerType {Burst, Spin, Aim, Triad}
-    enum MoveType {PopIn, SideToSide, GoDown, GoSide }
-
+    enum SpawnerType { Burst, Spin, Aim, Triad }
+    enum MoveType { PopIn, SideToSide, GoDown }
 
     [Header("Bullet Atributes")]
     public GameObject bullet;
@@ -25,16 +23,16 @@ public class EnemyMovement : MonoBehaviour
     private const float radius = 1f; //Find move direction
 
     [Header("Spawner Atributes")]
-    public int health = 1;
     [SerializeField] private SpawnerType spawnerType;
-    public float firingRate = 1f;
+    [SerializeField] private float firingRate = 1f;
+
     private GameObject spawnedBullet;
     private float timer = 0f;
     private Vector3 playerPosition;
     private Vector3 startPosition;
     private bool canShoot = true;
+    public int health;
 
-    
 
     //Movement Variables
     [Header("Movement Atributes")]
@@ -44,15 +42,16 @@ public class EnemyMovement : MonoBehaviour
     public float maxX;
     public float minZ;  //Z Distance before moving other way
     public float maxZ;
-    public bool goingRight; //If going Right
+    public bool movingRight; //If going Right
     public bool retreat;    //If it returns
+    public float startingX;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startingX = transform.position.x;
     }
 
     // Update is called once per frame
@@ -62,7 +61,6 @@ public class EnemyMovement : MonoBehaviour
         startPosition = transform.position;
         playerPosition = player.transform.position;
 
-        //Subtracting the 2 positions will have it aimed at that specific spot
         Vector3 fireDirection = startPosition - playerPosition; //Aim at player
 
         timer += Time.deltaTime;
@@ -84,17 +82,17 @@ public class EnemyMovement : MonoBehaviour
                 }
                 break;
 
-            case SpawnerType.FireDown:
+            case SpawnerType.Aim:
                 if (canShoot)
                 {
-                    StartCoroutine(DownShot(firingRate));
+                    StartCoroutine(AimShot(firingRate));
                 }
                 break;
 
-            case SpawnerType.FireSide:
+            case SpawnerType.Triad:
                 if (canShoot)
                 {
-                    StartCoroutine(SideShot(firingRate));
+                    StartCoroutine(TriadShot(firingRate));
                 }
                 break;
 
@@ -104,24 +102,56 @@ public class EnemyMovement : MonoBehaviour
         switch (moveType)
         {
             default:
-
+                Debug.Log("Uhoh");
                 break;
 
             case MoveType.PopIn:
 
+                //Enemy pops into the scene
+
+                //Remain Montionless
+
+                //Goes back and despawns
+
                 break;
 
             case MoveType.SideToSide:
-
+                if (movingRight)
+                {
+                    //If object is not farther than the starting pos + right travel dis,
+                    // it can move right
+                    if (transform.position.x <= startingX + maxX)
+                    {
+                        transform.position += Vector3.right * speed * Time.deltaTime;
+                    }
+                    else
+                    {
+                        movingRight = false;
+                    }
+                }
+                else
+                {
+                    //If object is not farther than start pos + left travel dist.
+                    // it can move left
+                    if (transform.position.x >= startingX + minX)
+                    {
+                        transform.position += Vector3.left * speed * Time.deltaTime;
+                    }
+                    else
+                    {
+                        //If object goes too far left, move rghtwa
+                        movingRight = true;
+                    }
+                }
                 break;
 
             case MoveType.GoDown:
+                //Go all the way down
 
+                //Despawn
                 break;
 
-            case MoveType.GoSide:
 
-                break;
         }
 
 
@@ -131,8 +161,8 @@ public class EnemyMovement : MonoBehaviour
             Despawn();
         }
 
-        
-        
+
+
     }
 
     //Functions
@@ -147,42 +177,91 @@ public class EnemyMovement : MonoBehaviour
     private IEnumerator BurstShot(float fireRate, int _bulletNum)
     {
         canShoot = false;
+
         float angleStep = 360f / _bulletNum; //Possible angles
         float angle = 0f;
+
         for (int i = 0; i <= _bulletNum - 1; i++)
         {
             //Direction Calculations
             float bulletDirXPos = startPosition.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
-            float bulletDirYPos = startPosition.z + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
+            float bulletDirYPos = startPosition.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
+
             Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
             Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
+
             GameObject tmpObj = Instantiate(bullet, startPosition, Quaternion.identity);
+
             tmpObj.GetComponent<Bullet>().bulletLife = bulletLife;
-            tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.z);
+            tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+
+
+
             angle += angleStep;
         }
+
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
 
-    private IEnumerator DownShot(float fireRate)
+    private IEnumerator AimShot(float fireRate)
     {
         canShoot = false;
+
+        Vector3 fireDirection = startPosition - playerPosition;
+
+        float bulletDirXPos = playerPosition.x;
+        float bulletDirYPos = playerPosition.z;
+
+        //Main Bullet
+        Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
+        Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
 
         GameObject tmpObj = Instantiate(bullet, startPosition, Quaternion.identity);
 
         tmpObj.GetComponent<Bullet>().bulletLife = bulletLife;
-        tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(1, 0, 0);
+        tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+
 
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
 
-    private IEnumerator SideShot(float fireRate)
+    private IEnumerator TriadShot(float fireRate)
     {
         canShoot = false;
 
-        
+        Vector3 fireDirection = startPosition - playerPosition;
+
+        float bulletDirXPos = playerPosition.x;
+        float bulletDirYPos = playerPosition.z;
+
+        //Main Bullet
+        Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
+        Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
+
+        GameObject tmpObjOne = Instantiate(bullet, startPosition, Quaternion.identity);
+
+        tmpObjOne.GetComponent<Bullet>().bulletLife = bulletLife;
+        tmpObjOne.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+
+        //Second Bullet
+        Vector3 bulletVectorTwo = new Vector3(bulletDirXPos - 30, bulletDirYPos, 0);
+        Vector3 bulletMoveDirectionTwo = (bulletVectorTwo - startPosition).normalized * bulletSpeed;
+
+        GameObject tmpObjTwo = Instantiate(bullet, startPosition, Quaternion.identity);
+
+        tmpObjTwo.GetComponent<Bullet>().bulletLife = bulletLife;
+        tmpObjTwo.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirectionTwo.x, 0, bulletMoveDirectionTwo.y);
+
+        //Third Bullet
+        Vector3 bulletVectorThree = new Vector3(bulletDirXPos + 30, bulletDirYPos, 0);
+        Vector3 bulletMoveDirectionThree = (bulletVectorThree - startPosition).normalized * bulletSpeed;
+
+        GameObject tmpObjThree = Instantiate(bullet, startPosition, Quaternion.identity);
+
+        tmpObjThree.GetComponent<Bullet>().bulletLife = bulletLife;
+        tmpObjThree.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirectionThree.x, 0, bulletMoveDirectionThree.y);
 
 
         yield return new WaitForSeconds(fireRate);
