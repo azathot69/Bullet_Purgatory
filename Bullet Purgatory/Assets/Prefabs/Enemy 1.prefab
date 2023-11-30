@@ -265,14 +265,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3355433189564712464, guid: 9e643c3d34e75074ea5899d29e7ecf76, type: 3}
   player: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
-  bulletLife: 1
-  bulletNum: 0
-  bulletSpeed: 1
-  health: 1
+  bulletLife: 10
+  bulletNum: 5
+  bulletSpeed: 100
   spawnerType: 0
   firingRate: 1
-  moveType: 0
-  speed: 0
+  health: 1
+  moveType: 2
+  speed: 5
   minX: 0
   maxX: 0
   minZ: 0
