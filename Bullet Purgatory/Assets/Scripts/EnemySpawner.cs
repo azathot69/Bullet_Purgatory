@@ -1,49 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     //Variables
 
-    //How many enemies to spawn
-    public int spawnNumber;
-
-    //Type of enemies to spawn
-    public Vector3 spawnPosition;
-    public GameObject enemyPrefab;
 
     //How fast enemies spawn
     public float spawnRate;
+    public bool canSpawn = true;
+    public GameObject[] enemyPrefabs;
 
-    //Current wave
-    private int waves = 0;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(Spawner());
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i <= waves; i++)
-        {
-
-
-        }
     }
 
     //Functions
 
     //IEnumerators
-    private IEnumerator SpawnEnemy(float spawnRate, GameObject Enemy, Vector3 spawnPosition)
+    private IEnumerator Spawner()
     {
-        GameObject EnemySpawn = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-        EnemySpawn.transform.position = spawnPosition;
-        //Each Enemy will have a different movement and shoot type
-     
-        yield return new WaitForSeconds(spawnRate);
+        WaitForSeconds wait = new WaitForSeconds(spawnRate);
+
+        while (canSpawn)
+        {
+            yield return wait;
+            int rand = Random.Range(0, enemyPrefabs.Length);
+            GameObject enemyToSpawn = enemyPrefabs[rand];
+
+            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+        }
+
     }
 }

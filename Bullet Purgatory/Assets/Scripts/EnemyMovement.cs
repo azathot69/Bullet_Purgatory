@@ -147,7 +147,7 @@ public class EnemyMovement : MonoBehaviour
 
             case MoveType.GoDown:
                 //Go all the way down
-
+                transform.position -= Vector3.forward * speed * Time.deltaTime;
                 //Despawn
                 break;
 
