@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
 {
 
     //Bullet Spawner Variables
-    enum SpawnerType { Burst, Spin, Aim, Triad }
+    enum SpawnerType { Burst, Spin, DownShot, Triad }
     enum MoveType { PopIn, SideToSide, GoDown }
 
     [Header("Bullet Atributes")]
@@ -82,10 +82,10 @@ public class EnemyMovement : MonoBehaviour
                 }
                 break;
 
-            case SpawnerType.Aim:
+            case SpawnerType.DownShot:
                 if (canShoot)
                 {
-                    StartCoroutine(AimShot(firingRate));
+                    StartCoroutine(DownShot(firingRate));
                 }
                 break;
 
@@ -204,14 +204,14 @@ public class EnemyMovement : MonoBehaviour
         canShoot = true;
     }
 
-    private IEnumerator AimShot(float fireRate)
+    private IEnumerator DownShot(float fireRate)
     {
         canShoot = false;
 
         Vector3 fireDirection = startPosition - playerPosition;
 
-        float bulletDirXPos = playerPosition.x;
-        float bulletDirYPos = playerPosition.z;
+        float bulletDirXPos = startPosition.x + Mathf.Sin((180 * Mathf.PI) / 180) * radius;
+        float bulletDirYPos = startPosition.y + Mathf.Cos((180 * Mathf.PI) / 180) * radius;
 
         //Main Bullet
         Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
