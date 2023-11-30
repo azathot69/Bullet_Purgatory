@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91374668b7eb72b44a42fdee12a36796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  facingForward: 1
+  speed: 40
+  facingForward: 0
   facingBackward: 0
   facingRight: 0
   facingLeft: 0

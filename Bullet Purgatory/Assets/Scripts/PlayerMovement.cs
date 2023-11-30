@@ -35,9 +35,9 @@ public class PlayerMovement : MonoBehaviour
     public int bombs;
 
     public float minX = -52f;
-    public float maxX = 52f;
-    public float minY = -44f;
-    public float maxY = 44f;
+    public float maxZ = 52f;
+    public float minZ = -44f;
+    public float maxX = 44f;
 
     //Position where the player respawns from death
     Vector3 spawnPoint;
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
             //Moves the object over to the right w/ Vector3.right by speed (m/s)
             //Multiply that by Time.deltaTime to convert m/frame to m/s
-            if (transform.position.z >= maxY)
+            if (transform.position.z >= maxZ)
             {
 
             }
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
             //Moves the object over to the right w/ Vector3.right by speed (m/s)
             //Multiply that by Time.deltaTime to convert m/frame to m/s
-            if (transform.position.y <= minY)
+            if (transform.position.z <= minZ)
             {
 
             }
@@ -225,21 +225,25 @@ public class PlayerMovement : MonoBehaviour
             {
                 GameObject playerProjectileInstance = Instantiate(playerProjectilePrefab, shootingPoint.position, shootingPoint.rotation);
                 playerProjectileInstance.GetComponent<PlayerBullet>().facingForward = shootForward;
+                StartCoroutine(Shooting(fireRate));
             }
             if (shootRight == true)
             {
                 GameObject playerProjectileInstance = Instantiate(playerProjectilePrefab, shootingPoint.position, shootingPoint.rotation);
                 playerProjectileInstance.GetComponent<PlayerBullet>().facingRight = shootRight;
+                StartCoroutine(Shooting(fireRate));
             }
             if (shootBackward == true)
             {
                 GameObject playerProjectileInstance = Instantiate(playerProjectilePrefab, shootingPoint.position, shootingPoint.rotation);
                 playerProjectileInstance.GetComponent<PlayerBullet>().facingBackward = shootBackward;
+                StartCoroutine(Shooting(fireRate));
             }
             if (shootLeft == true)
             {
                 GameObject playerProjectileInstance = Instantiate(playerProjectilePrefab, shootingPoint.position, shootingPoint.rotation);
                 playerProjectileInstance.GetComponent<PlayerBullet>().facingLeft = shootLeft;
+                StartCoroutine(Shooting(fireRate));
             }
         }
     }

@@ -285,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.14542
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: m_LocalPosition.y
@@ -293,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.62291
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: m_LocalRotation.w
@@ -324,8 +324,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+      propertyPath: maxX
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+      propertyPath: minX
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+      propertyPath: minZ
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: speed
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: fireRate
