@@ -11,8 +11,8 @@ public class EnemyMovement : MonoBehaviour
 {
 
     //Bullet Spawner Variables
-    enum SpawnerType {Burst, Spin, Aim, Triad}
-    enum MoveType {PopIn, SideToSide, GoDown}
+    enum SpawnerType { Burst, Spin, DownShot, Triad }
+    enum MoveType { PopIn, SideToSide, GoDown }
 
     [Header("Bullet Atributes")]
     public GameObject bullet;
@@ -23,16 +23,16 @@ public class EnemyMovement : MonoBehaviour
     private const float radius = 1f; //Find move direction
 
     [Header("Spawner Atributes")]
-    public int health = 1;
     [SerializeField] private SpawnerType spawnerType;
-    public float firingRate = 1f;
+    [SerializeField] private float firingRate = 1f;
+
     private GameObject spawnedBullet;
     private float timer = 0f;
     private Vector3 playerPosition;
     private Vector3 startPosition;
     private bool canShoot = true;
+    public int health;
 
-    
 
     //Movement Variables
     [Header("Movement Atributes")]
@@ -61,7 +61,6 @@ public class EnemyMovement : MonoBehaviour
         startPosition = transform.position;
         playerPosition = player.transform.position;
 
-        //Subtracting the 2 positions will have it aimed at that specific spot
         Vector3 fireDirection = startPosition - playerPosition; //Aim at player
 
         timer += Time.deltaTime;
@@ -83,10 +82,10 @@ public class EnemyMovement : MonoBehaviour
                 }
                 break;
 
-            case SpawnerType.Aim:
+            case SpawnerType.DownShot:
                 if (canShoot)
                 {
-                    StartCoroutine(AimShot(firingRate));
+                    StartCoroutine(DownShot(firingRate));
                 }
                 break;
 
@@ -162,8 +161,8 @@ public class EnemyMovement : MonoBehaviour
             Despawn();
         }
 
-        
-        
+
+
     }
 
     //Functions
@@ -205,14 +204,14 @@ public class EnemyMovement : MonoBehaviour
         canShoot = true;
     }
 
-    private IEnumerator AimShot(float fireRate)
+    private IEnumerator DownShot(float fireRate)
     {
         canShoot = false;
 
         Vector3 fireDirection = startPosition - playerPosition;
 
-        float bulletDirXPos = playerPosition.x;
-        float bulletDirYPos = playerPosition.z;
+        float bulletDirXPos = startPosition.x + Mathf.Sin((180 * Mathf.PI) / 180) * radius;
+        float bulletDirYPos = startPosition.y + Mathf.Cos((180 * Mathf.PI) / 180) * radius;
 
         //Main Bullet
         Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);

@@ -20,16 +20,24 @@ public class PlayerMovement : MonoBehaviour
     //Determine if player can shoot
     private bool canShoot = true;
 
+    public bool shootForward = false;
+    public bool shootBackward = false;
+    public bool shootRight = false;
+    public bool shootLeft = false;
+
     //Number of lives player has
     public int lives;
+
+    public GameObject playerProjectilePrefab;
+    public Transform shootingPoint;
 
     //Number of bombs player has
     public int bombs;
 
     public float minX = -52f;
     public float maxX = 52f;
-    public float minZ = -43f;
-    public float maxZ = 8F;
+    public float minY = -44f;
+    public float maxY = 44f;
 
     //Position where the player respawns from death
     Vector3 spawnPoint;
@@ -68,12 +76,12 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         //Player goes up
-        if (Input.GetKey(KeyCode.W) || Input.GetKey("up"))
+        if (Input.GetKey(KeyCode.W))
         {
 
             //Moves the object over to the right w/ Vector3.right by speed (m/s)
             //Multiply that by Time.deltaTime to convert m/frame to m/s
-            if (transform.position.z >= maxZ)
+            if (transform.position.z >= maxY)
             {
 
             }
@@ -85,12 +93,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Player goes down
-        if (Input.GetKey(KeyCode.S) || Input.GetKey("down"))
+        if (Input.GetKey(KeyCode.S))
         {
 
             //Moves the object over to the right w/ Vector3.right by speed (m/s)
             //Multiply that by Time.deltaTime to convert m/frame to m/s
-            if (transform.position.z <= minZ)
+            if (transform.position.y <= minY)
             {
 
             }
@@ -102,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Player goes left
-        if (Input.GetKey(KeyCode.A) || Input.GetKey("left"))
+        if (Input.GetKey(KeyCode.A))
         {
 
             //Moves the object over to the right w/ Vector3.right by speed (m/s)
@@ -119,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Player goes right
-        if (Input.GetKey(KeyCode.D) || Input.GetKey("right"))
+        if (Input.GetKey(KeyCode.D))
         {
 
             //Moves the object over to the right w/ Vector3.right by speed (m/s)
@@ -136,9 +144,43 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Player fires bullet
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKey("up"))
         {
             Debug.Log("Player Shoots");
+            shootForward = true;
+            shootBackward = false;
+            shootRight = false;
+            shootLeft = false;
+            ShootBullet();
+        }
+
+        if (Input.GetKey("right"))
+        {
+            Debug.Log("Player Shoots");
+            shootForward = false;
+            shootBackward = false;
+            shootRight = true;
+            shootLeft = false;
+            ShootBullet();
+        }
+
+        if (Input.GetKey("down"))
+        {
+            Debug.Log("Player Shoots");
+            shootForward = false;
+            shootBackward = true;
+            shootRight = false;
+            shootLeft = false;
+            ShootBullet();
+        }
+        if (Input.GetKey("left"))
+        {
+            Debug.Log("Player Shoots");
+            shootForward = false;
+            shootBackward = false;
+            shootRight = false;
+            shootLeft = true;
+            ShootBullet();
         }
 
         //Player shoots bomb
@@ -177,6 +219,28 @@ public class PlayerMovement : MonoBehaviour
         if (canShoot)
         {
             //Allow bullet to shoot
+            
+            //Bullet shooting
+            if (shootForward == true)
+            {
+                GameObject playerProjectileInstance = Instantiate(playerProjectilePrefab, shootingPoint.position, shootingPoint.rotation);
+                playerProjectileInstance.GetComponent<PlayerBullet>().facingForward = shootForward;
+            }
+            if (shootRight == true)
+            {
+                GameObject playerProjectileInstance = Instantiate(playerProjectilePrefab, shootingPoint.position, shootingPoint.rotation);
+                playerProjectileInstance.GetComponent<PlayerBullet>().facingRight = shootRight;
+            }
+            if (shootBackward == true)
+            {
+                GameObject playerProjectileInstance = Instantiate(playerProjectilePrefab, shootingPoint.position, shootingPoint.rotation);
+                playerProjectileInstance.GetComponent<PlayerBullet>().facingBackward = shootBackward;
+            }
+            if (shootLeft == true)
+            {
+                GameObject playerProjectileInstance = Instantiate(playerProjectilePrefab, shootingPoint.position, shootingPoint.rotation);
+                playerProjectileInstance.GetComponent<PlayerBullet>().facingLeft = shootLeft;
+            }
         }
     }
 
