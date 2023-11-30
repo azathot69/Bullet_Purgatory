@@ -480,7 +480,7 @@ MonoBehaviour:
   bulletLife: 10
   bulletNum: 1
   bulletSpeed: 50
-  spawnerType: 2
+  spawnerType: 3
   firingRate: 1
   health: 1
   moveType: 2
