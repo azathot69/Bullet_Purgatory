@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     //Number of bombs player has
     public int bombs;
 
+    //The player's score
+    public int score = 0;
+
     public float minX = -52f;
     public float maxZ = 52f;
     public float minZ = -44f;
