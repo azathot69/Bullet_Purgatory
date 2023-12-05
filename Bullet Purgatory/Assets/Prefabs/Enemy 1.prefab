@@ -284,6 +284,7 @@ MonoBehaviour:
   movingRight: 0
   movingDown: 0
   startingX: 0
+  scoreValue: 10
 --- !u!65 &-5602555165829767822
 BoxCollider:
   m_ObjectHideFlags: 0

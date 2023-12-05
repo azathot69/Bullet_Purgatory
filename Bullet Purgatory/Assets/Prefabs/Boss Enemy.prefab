@@ -1875,6 +1875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   bossHealth: 20
+  scoreValue: 500
   newRotation: {x: 0, y: 0, z: 0}
   minX: 0
   maxX: 0

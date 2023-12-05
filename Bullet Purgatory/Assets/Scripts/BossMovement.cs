@@ -8,6 +8,7 @@ public class BossMovement : MonoBehaviour
     //Variables
     public float speed;
     public int bossHealth;
+    public int scoreValue;
     public Vector3 newRotation;
 
     public float minX;
@@ -80,6 +81,7 @@ public class BossMovement : MonoBehaviour
         if (bossHealth <= 0)
         {
             Despawn();
+            gameObject.GetComponent<PlayerMovement>().score += scoreValue;
         }
     }
 
