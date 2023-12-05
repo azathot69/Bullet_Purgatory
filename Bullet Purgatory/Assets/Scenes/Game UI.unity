@@ -123,71 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &72540603
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2377221572383077526, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_Name
-      value: Enemy 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6606817554533125199, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: playerScore
-      value: 
-      objectReference: {fileID: 1875112989}
-    - target: {fileID: 6606817554533125199, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: playerMovement
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.5072479
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.1355667
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8567244987006724624, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
 --- !u!1 &93964590
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,8 +155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38100c8397aae744a814735ca204b04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 1
   playerHP: {fileID: 495357284}
   playerScore: {fileID: 1927883134}
+  level: {fileID: 1925251053}
   playerMovement: {fileID: 2014681986}
 --- !u!114 &93964592
 MonoBehaviour:
@@ -765,11 +702,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
---- !u!1 &1875112989 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5293137323980448899, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
-  m_PrefabInstance: {fileID: 796548460}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1925251051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,7 +975,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
   m_PrefabInstance: {fileID: 796548460}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875112989}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a85078465c17cc04e9cba7c3e1eafe95, type: 3}
@@ -1058,4 +990,3 @@ SceneRoots:
   - {fileID: 93964595}
   - {fileID: 546191084}
   - {fileID: 796548460}
-  - {fileID: 72540603}
