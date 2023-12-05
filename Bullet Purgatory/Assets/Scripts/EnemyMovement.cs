@@ -10,7 +10,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
 
-    //Bullet Spawner Variables
+    #region Bullet Spawner Variables
     enum SpawnerType { Burst, Spin, DownShot, Triad }
     enum MoveType { PopIn, SideToSide, GoDown }
 
@@ -21,8 +21,11 @@ public class EnemyMovement : MonoBehaviour
     public int bulletNum;
     public float bulletSpeed = 1f;
     private const float radius = 1f; //Find move direction
+    #endregion
 
+    #region Spawner Variables
     [Header("Spawner Atributes")]
+    public GameObject gameMaster;
     [SerializeField] private SpawnerType spawnerType;
     [SerializeField] private float firingRate = 1f;
 
@@ -32,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 startPosition;
     private bool canShoot = true;
     public int health;
-
+    #endregion
 
     //The destination an enemy can reach before despawning
     public float killZ;
@@ -179,6 +182,8 @@ public class EnemyMovement : MonoBehaviour
     private void Despawn()
     {
         gameObject.SetActive(false);
+
+        gameObject.GetComponent<GameMaster>().enemiesDefeated++;
     }
 
     //IEnumerators

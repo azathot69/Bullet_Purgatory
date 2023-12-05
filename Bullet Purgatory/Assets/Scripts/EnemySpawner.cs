@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRate;
     public bool canSpawn = true;
     public GameObject[] enemyPrefabs;
-
+    
 
 
     // Start is called before the first frame update
@@ -31,6 +31,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region Movement
         if (movingRight)
         {
             //If object is not farther than the starting pos + right travel dis,
@@ -58,16 +59,37 @@ public class EnemySpawner : MonoBehaviour
                 movingRight = true;
             }
         }
+        #endregion
+
+        #region
+
+        #endregion
     }
 
     //Functions
+    public void Switch(bool change)
+    {
+        switch (change)
+        {
+            case true:
+                canSpawn = true;
+                break;
+
+
+            case false:
+                canSpawn = false;
+                break;
+        }
+    }
+
 
     //IEnumerators
     private IEnumerator Spawner()
     {
+
         WaitForSeconds wait = new WaitForSeconds(spawnRate);
 
-        while (canSpawn)
+        while (canSpawn == true)
         {
             yield return wait;
             int rand = Random.Range(0, enemyPrefabs.Length);

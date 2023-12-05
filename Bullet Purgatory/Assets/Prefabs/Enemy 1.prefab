@@ -268,9 +268,11 @@ MonoBehaviour:
   bulletLife: 10
   bulletNum: 5
   bulletSpeed: 100
+  gameMaster: {fileID: 297081393578387129, guid: a27a7d8bda8d91b49987a32c8c36c61f, type: 3}
   spawnerType: 0
   firingRate: 1
   health: 1
+  killZ: 0
   moveType: 2
   speed: 5
   minX: 0
