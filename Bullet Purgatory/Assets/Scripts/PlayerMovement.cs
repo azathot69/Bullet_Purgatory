@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     //Number of lives player has
     public int lives;
 
+
     public GameObject playerProjectilePrefab;
     public Transform shootingPoint;
 
