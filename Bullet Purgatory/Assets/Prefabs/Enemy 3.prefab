@@ -481,16 +481,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb27f4e872848664f8007b5be03b99e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Movement: 1
   bullet: {fileID: 3355433189564712464, guid: 15a5deba2d77bb74e832bbefa703db82, type: 3}
   player: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
   bulletLife: 20
   bulletNum: 10
   bulletSpeed: 50
-  gameMaster: {fileID: 297081393578387129, guid: a27a7d8bda8d91b49987a32c8c36c61f, type: 3}
   spawnerType: 1
-  firingRate: 0.5
+  firingRate: 1
   health: 1
-  killZ: 0
+  killZ: 30
   moveType: 2
   speed: 9
   minX: 0

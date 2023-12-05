@@ -5,9 +5,9 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
     //Game Objects
-    public GameObject spawner1;
-    public GameObject spawner2;
-    public GameObject spawner3;
+    [SerializeField] private GameObject spawner1;
+    [SerializeField] private GameObject spawner2;
+    [SerializeField] private GameObject spawner3;
     public GameObject boss;
 
     //Variables

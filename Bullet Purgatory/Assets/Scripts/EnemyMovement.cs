@@ -12,7 +12,9 @@ public class EnemyMovement : MonoBehaviour
 
     #region Bullet Spawner Variables
     enum SpawnerType { Burst, Spin, DownShot, Triad }
-    enum MoveType { PopIn, SideToSide, GoDown }
+    public enum MoveType { GoLeft, GoRight, GoDown }
+    public int Movement = 1;
+
 
     [Header("Bullet Atributes")]
     public GameObject bullet;
@@ -25,7 +27,6 @@ public class EnemyMovement : MonoBehaviour
 
     #region Spawner Variables
     [Header("Spawner Atributes")]
-    public GameObject gameMaster;
     [SerializeField] private SpawnerType spawnerType;
     [SerializeField] private float firingRate = 1f;
 
@@ -104,50 +105,20 @@ public class EnemyMovement : MonoBehaviour
 
         }
 
+        /*
         switch (moveType)
         {
             default:
                 Debug.Log("Uhoh");
                 break;
 
-            case MoveType.PopIn:
-
-                //Enemy pops into the scene
-
-                //Remain Montionless
-
-                //Goes back and despawns
+            case MoveType.GoLeft:
+                transform.position += Vector3.left * speed * Time.deltaTime;
 
                 break;
 
-            case MoveType.SideToSide:
-                if (movingRight)
-                {
-                    //If object is not farther than the starting pos + right travel dis,
-                    // it can move right
-                    if (transform.position.x <= startingX + maxX)
-                    {
-                        transform.position += Vector3.right * speed * Time.deltaTime;
-                    }
-                    else
-                    {
-                        movingRight = false;
-                    }
-                }
-                else
-                {
-                    //If object is not farther than start pos + left travel dist.
-                    // it can move left
-                    if (transform.position.x >= startingX + minX)
-                    {
-                        transform.position += Vector3.left * speed * Time.deltaTime;
-                    }
-                    else
-                    {
-                        //If object goes too far left, move rghtwa
-                        movingRight = true;
-                    }
-                }
+            case MoveType.GoRight:
+                transform.position += Vector3.right * speed * Time.deltaTime;
                 break;
 
             case MoveType.GoDown:
@@ -156,9 +127,31 @@ public class EnemyMovement : MonoBehaviour
                 //Despawn
                 break;
 
+        }
+        */
+
+        switch (Movement)
+        {
+            default:
+                Debug.Log("Uhoh");
+                break;
+
+            case 3:
+                transform.position += Vector3.left * speed * Time.deltaTime;
+
+                break;
+
+            case 2:
+                transform.position += Vector3.right * speed * Time.deltaTime;
+                break;
+
+            case 1:
+                //Go all the way down
+                transform.position -= Vector3.forward * speed * Time.deltaTime;
+                break;
+
 
         }
-
 
 
 
@@ -170,8 +163,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (transform.position.z <= maxZ)
         {
-
-            Despawn();
+            Debug.Log("Too Deep. Deleting!");
+            //Despawn();
         }
 
     }
@@ -182,8 +175,6 @@ public class EnemyMovement : MonoBehaviour
     private void Despawn()
     {
         gameObject.SetActive(false);
-
-        gameObject.GetComponent<GameMaster>().enemiesDefeated++;
     }
 
     //IEnumerators

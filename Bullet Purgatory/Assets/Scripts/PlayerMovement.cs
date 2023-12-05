@@ -72,6 +72,10 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("A Bullet hit the player!!");
                 Respawn();
                 break;
+
+            case "Enemy":
+                Debug.Log("A Bullet hit the player!!");
+                break;
         }
     }
 

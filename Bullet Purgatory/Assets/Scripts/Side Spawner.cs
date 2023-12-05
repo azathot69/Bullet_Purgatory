@@ -1,34 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class EnemySpawner : MonoBehaviour
+public class SideSpawner : MonoBehaviour
 {
     //Variables
-    public float minX;
-    public float maxX;
-    private bool movingRight = true;
+    public float minZ = -33f;
+    public float maxZ = 13f;
+    public bool movingUp = true;
     public float speed = 10f;
 
-    public float startX;
+    public float startZ;
 
     //How fast enemies spawn
     public float spawnRate;
     public bool canSpawn = true;
     public GameObject[] enemyPrefabs;
+    public bool spawnRight;
 
     [SerializeField] private int enemiesSpawned;
-
-    //Other Spawners
-    [SerializeField] private GameObject sideSpawner1; // Spawns from the Left
-    [SerializeField] private GameObject sideSpawner2; //Spawns from the right
 
     // Start is called before the first frame update
     void Start()
     {
-        startX = transform.position.x;
+        startZ = transform.position.z;
         StartCoroutine(Spawner());
     }
 
@@ -36,31 +34,31 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         #region Movement
-        if (movingRight)
+        if (movingUp)
         {
             //If object is not farther than the starting pos + right travel dis,
             // it can move right
-            if (transform.position.x <= startX + maxX)
+            if (transform.position.z <=  maxZ)
             {
-                transform.position += Vector3.right * speed * Time.deltaTime;
+                transform.position += Vector3.forward * speed * Time.deltaTime;
             }
             else
             {
-                movingRight = false;
+                movingUp = false;
             }
         }
         else
         {
             //If object is not farther than start pos + left travel dist.
             // it can move left
-            if (transform.position.x >= startX + minX)
+            if (transform.position.x >=  minZ)
             {
-                transform.position += Vector3.left * speed * Time.deltaTime;
+                transform.position -= Vector3.forward * speed * Time.deltaTime;
             }
             else
             {
                 //If object goes too far left, move rghtwa
-                movingRight = true;
+                movingUp = true;
             }
         }
         #endregion
@@ -103,7 +101,20 @@ public class EnemySpawner : MonoBehaviour
             int rand = Random.Range(0, enemyPrefabs.Length);
             GameObject enemyToSpawn = enemyPrefabs[rand];
             enemiesSpawned++;
-            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            if (spawnRight)
+            {
+                //Make enemy go right
+                enemy.GetComponent<EnemyMovement>().Movement = 2;
+                enemy.transform.eulerAngles = new Vector3(0, 270, 0);
+            }
+            else
+            {
+                //Make enemy go left
+                enemy.GetComponent<EnemyMovement>().Movement = 3;
+                enemy.transform.eulerAngles = new Vector3(0, 90, 0);
+            }
+
         }
 
     }
