@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -12,8 +13,8 @@ public class EnemyMovement : MonoBehaviour
 
     #region Bullet Spawner Variables
     enum SpawnerType { Burst, Spin, DownShot, Triad }
-    public enum MoveType { GoLeft, GoRight, GoDown }
-    public int Movement = 1;
+    
+
 
 
     [Header("Bullet Atributes")]
@@ -44,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
 
     //Movement Variables
     [Header("Movement Atributes")]
-    [SerializeField] private MoveType moveType;
+    public int Movement = 1;
     public float speed; //How fast it moves
     public float minX;  //X Distance before moving other way
     public float maxX;
@@ -105,31 +106,6 @@ public class EnemyMovement : MonoBehaviour
 
         }
 
-        /*
-        switch (moveType)
-        {
-            default:
-                Debug.Log("Uhoh");
-                break;
-
-            case MoveType.GoLeft:
-                transform.position += Vector3.left * speed * Time.deltaTime;
-
-                break;
-
-            case MoveType.GoRight:
-                transform.position += Vector3.right * speed * Time.deltaTime;
-                break;
-
-            case MoveType.GoDown:
-                //Go all the way down
-                transform.position -= Vector3.forward * speed * Time.deltaTime;
-                //Despawn
-                break;
-
-        }
-        */
-
         switch (Movement)
         {
             default:
@@ -153,7 +129,7 @@ public class EnemyMovement : MonoBehaviour
 
         }
 
-
+        
 
         //HP Depleted
         if (health <= 0)
@@ -163,11 +139,27 @@ public class EnemyMovement : MonoBehaviour
 
         if (transform.position.z <= maxZ)
         {
-            Debug.Log("Too Deep. Deleting!");
-            //Despawn();
+            
+            Despawn();
         }
 
+
+
     }
+
+    //Collision
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Player Projectile":
+                other.gameObject.SetActive(false);
+                health--;
+                break;
+
+        }
+    }
+
 
     //Functions
 

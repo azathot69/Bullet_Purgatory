@@ -153,7 +153,7 @@ public class PlayerMovement : MonoBehaviour
         //Player fires bullet
         if (Input.GetKey("up"))
         {
-            Debug.Log("Player Shoots");
+
             shootForward = true;
             shootBackward = false;
             shootRight = false;
@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey("right"))
         {
-            Debug.Log("Player Shoots");
+
             shootForward = false;
             shootBackward = false;
             shootRight = true;
@@ -173,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey("down"))
         {
-            Debug.Log("Player Shoots");
+
             shootForward = false;
             shootBackward = true;
             shootRight = false;
@@ -182,7 +182,6 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey("left"))
         {
-            Debug.Log("Player Shoots");
             shootForward = false;
             shootBackward = false;
             shootRight = false;

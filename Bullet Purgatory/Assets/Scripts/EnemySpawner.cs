@@ -66,9 +66,14 @@ public class EnemySpawner : MonoBehaviour
         #endregion
 
         #region
+        if (enemiesSpawned >= 3)
+        {
+            sideSpawner1.GetComponent<SideSpawner>().canSpawn = true;
+        }
         if (enemiesSpawned >= 5)
         {
-            canSpawn = false;
+            sideSpawner2.GetComponent<SideSpawner>().canSpawn = true;
+
         }
         #endregion
     }

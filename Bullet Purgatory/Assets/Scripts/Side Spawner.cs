@@ -38,7 +38,7 @@ public class SideSpawner : MonoBehaviour
         {
             //If object is not farther than the starting pos + right travel dis,
             // it can move right
-            if (transform.position.z <=  maxZ)
+            if (transform.position.z <=  maxZ + startZ)
             {
                 transform.position += Vector3.forward * speed * Time.deltaTime;
             }
@@ -51,13 +51,12 @@ public class SideSpawner : MonoBehaviour
         {
             //If object is not farther than start pos + left travel dist.
             // it can move left
-            if (transform.position.x >=  minZ)
+            if (transform.position.z >=  minZ + startZ)
             {
                 transform.position -= Vector3.forward * speed * Time.deltaTime;
             }
             else
             {
-                //If object goes too far left, move rghtwa
                 movingUp = true;
             }
         }

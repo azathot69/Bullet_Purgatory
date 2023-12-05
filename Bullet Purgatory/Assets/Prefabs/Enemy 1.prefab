@@ -270,7 +270,7 @@ MonoBehaviour:
   bulletNum: 5
   bulletSpeed: 100
   spawnerType: 0
-  firingRate: 1
+  firingRate: 3
   health: 1
   killZ: 30
   moveType: 2
