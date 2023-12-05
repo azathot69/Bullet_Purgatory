@@ -183,15 +183,15 @@ public class EnemyMovement : MonoBehaviour
         {
             //Direction Calculations
             float bulletDirXPos = startPosition.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
-            float bulletDirYPos = startPosition.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
+            float bulletDirYPos = startPosition.z + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
 
-            Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
+            Vector3 bulletVector = new Vector3(bulletDirXPos, 0, bulletDirYPos);
             Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
 
             GameObject tmpObj = Instantiate(bullet, startPosition, Quaternion.identity);
 
             tmpObj.GetComponent<Bullet>().bulletLife = bulletLife;
-            tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+            tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.z);
 
 
 
@@ -209,16 +209,16 @@ public class EnemyMovement : MonoBehaviour
         Vector3 fireDirection = startPosition - playerPosition;
 
         float bulletDirXPos = startPosition.x + Mathf.Sin((180 * Mathf.PI) / 180) * radius;
-        float bulletDirYPos = startPosition.y + Mathf.Cos((180 * Mathf.PI) / 180) * radius;
+        float bulletDirYPos = startPosition.z + Mathf.Cos((180 * Mathf.PI) / 180) * radius;
 
         //Main Bullet
-        Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
+        Vector3 bulletVector = new Vector3(bulletDirXPos, 0, bulletDirYPos);
         Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
 
         GameObject tmpObj = Instantiate(bullet, startPosition, Quaternion.identity);
 
         tmpObj.GetComponent<Bullet>().bulletLife = bulletLife;
-        tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+        tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.z);
 
 
         yield return new WaitForSeconds(fireRate);
@@ -232,41 +232,43 @@ public class EnemyMovement : MonoBehaviour
         Vector3 fireDirection = startPosition - playerPosition;
 
         float bulletDirXPos = startPosition.x + Mathf.Sin((180 * Mathf.PI) / 180) * radius;
-        float bulletDirYPos = startPosition.y + Mathf.Cos((180 * Mathf.PI) / 180) * radius;
+        float bulletDirYPos = startPosition.z + Mathf.Cos((180 * Mathf.PI) / 180) * radius;
 
         float bulletDirXPosOne = startPosition.x + Mathf.Sin((90 * Mathf.PI) / 180) * radius;
-        float bulletDirYPosOne = startPosition.y + Mathf.Cos((90 * Mathf.PI) / 180) * radius;
+        float bulletDirYPosOne = startPosition.z + Mathf.Cos((90 * Mathf.PI) / 180) * radius;
 
         float bulletDirXPosTwo = startPosition.x + Mathf.Sin((270 * Mathf.PI) / 180) * radius;
-        float bulletDirYPosTwo = startPosition.y + Mathf.Cos((270 * Mathf.PI) / 180) * radius;
+        float bulletDirYPosTwo = startPosition.z + Mathf.Cos((270 * Mathf.PI) / 180) * radius;
 
-        //Main Bullet
-        Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
+        #region  Main Bullet
+        Vector3 bulletVector = new Vector3(bulletDirXPos, 0, bulletDirYPos);
         Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
 
         GameObject tmpObj = Instantiate(bullet, startPosition, Quaternion.identity);
 
         tmpObj.GetComponent<Bullet>().bulletLife = bulletLife;
-        tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+        tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.z);
+        #endregion
 
-        //Second Bullet
-        Vector3 bulletVectorOne = new Vector3(bulletDirXPosOne, bulletDirYPosOne, 0);
+        #region Second Bullet
+        Vector3 bulletVectorOne = new Vector3(bulletDirXPosOne, 0, bulletDirYPosOne);
         Vector3 bulletMoveDirectionOne = (bulletVectorOne - startPosition).normalized * bulletSpeed;
 
         GameObject tmpObjOne = Instantiate(bullet, startPosition, Quaternion.identity);
 
         tmpObjOne.GetComponent<Bullet>().bulletLife = bulletLife;
-        tmpObjOne.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirectionOne.x, 0, bulletMoveDirectionOne.y);
+        tmpObjOne.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirectionOne.x, 0, bulletMoveDirectionOne.z);
+        #endregion
 
-
-        //Third Bullet
-        Vector3 bulletVectorTwo = new Vector3(bulletDirXPosTwo, bulletDirYPosTwo, 0);
+        #region Third Bullet
+        Vector3 bulletVectorTwo = new Vector3(bulletDirXPosTwo, 0, bulletDirYPosTwo);
         Vector3 bulletMoveDirectionTwo = (bulletVectorTwo - startPosition).normalized * bulletSpeed;
 
         GameObject tmpObjTwo = Instantiate(bullet, startPosition, Quaternion.identity);
 
         tmpObjTwo.GetComponent<Bullet>().bulletLife = bulletLife;
-        tmpObjTwo.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirectionTwo.x, 0, bulletMoveDirectionTwo.y);
+        tmpObjTwo.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirectionTwo.x, 0, bulletMoveDirectionTwo.z);
+        #endregion
 
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
@@ -283,16 +285,15 @@ public class EnemyMovement : MonoBehaviour
         {
             //Direction Calculations
             float bulletDirXPos = startPosition.x + Mathf.Sin((angle * Mathf.PI) / 180) * radius;
-            float bulletDirYPos = startPosition.y + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
+            float bulletDirYPos = startPosition.z + Mathf.Cos((angle * Mathf.PI) / 180) * radius;
 
-            Vector3 bulletVector = new Vector3(bulletDirXPos, bulletDirYPos, 0);
+            Vector3 bulletVector = new Vector3(bulletDirXPos, 0, bulletDirYPos);
             Vector3 bulletMoveDirection = (bulletVector - startPosition).normalized * bulletSpeed;
 
             GameObject tmpObj = Instantiate(bullet, startPosition, Quaternion.identity);
 
             tmpObj.GetComponent<Bullet>().bulletLife = bulletLife;
-            //tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x + playerPosition.x, 0, bulletMoveDirection.y + playerPosition.z); //This makes a cool pattern!
-            tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y);
+            tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.z);
 
 
 

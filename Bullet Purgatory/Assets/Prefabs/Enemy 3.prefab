@@ -486,9 +486,9 @@ MonoBehaviour:
   player: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
   bulletLife: 20
   bulletNum: 10
-  bulletSpeed: 50
+  bulletSpeed: 10
   spawnerType: 1
-  firingRate: 3
+  firingRate: 0.5
   health: 7
   killZ: -30
   Movement: 1
