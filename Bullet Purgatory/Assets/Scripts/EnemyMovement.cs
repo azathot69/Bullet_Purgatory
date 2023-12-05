@@ -42,6 +42,8 @@ public class EnemyMovement : MonoBehaviour
     //The destination an enemy can reach before despawning
     public float killZ;
 
+    public float killXRight;
+    public float killXLeft;
 
     //Movement Variables
     [Header("Movement Atributes")]
@@ -52,7 +54,7 @@ public class EnemyMovement : MonoBehaviour
     public float minZ;  //Z Distance before moving other way
     public float maxZ;
     public bool movingRight; //If going Right
-    public bool retreat;    //If it returns
+    public bool movingDown;
     public float startingX;
 
 
@@ -114,16 +116,18 @@ public class EnemyMovement : MonoBehaviour
 
             case 3:
                 transform.position += Vector3.left * speed * Time.deltaTime;
-
+                movingRight = false;
                 break;
 
             case 2:
                 transform.position += Vector3.right * speed * Time.deltaTime;
+                movingRight = true;
                 break;
 
             case 1:
                 //Go all the way down
                 transform.position -= Vector3.forward * speed * Time.deltaTime;
+                movingDown = true;
                 break;
 
 
@@ -139,11 +143,16 @@ public class EnemyMovement : MonoBehaviour
 
         if (transform.position.z <= killZ)
         {
-            
             Despawn();
         }
-
-
+        if (movingRight && transform.position.x >= killXRight)
+        {
+            Despawn();
+        }
+        if (!movingRight && transform.position.x <= killXLeft)
+        {
+            Despawn();
+        }
 
     }
 

@@ -490,7 +490,9 @@ MonoBehaviour:
   spawnerType: 1
   firingRate: 0.5
   health: 7
-  killZ: -30
+  killZ: -40
+  killXRight: 40
+  killXLeft: -40
   Movement: 1
   speed: 9
   minX: 0
@@ -498,7 +500,7 @@ MonoBehaviour:
   minZ: 0
   maxZ: 0
   movingRight: 0
-  retreat: 0
+  movingDown: 0
   startingX: 0
 --- !u!65 &3814318199109124726
 BoxCollider:

@@ -20,8 +20,8 @@ public class GameMaster : MonoBehaviour
     {
         enemiesDefeated = 0;
         spawner1.GetComponent<EnemySpawner>().Switch(true);
-        //spawner2.GetComponent<EnemySpawner>().Switch(false);
-        //spawner3.GetComponent<EnemySpawner>().Switch(false);
+        spawner2.GetComponent<EnemySpawner>().Switch(false);
+        spawner3.GetComponent<EnemySpawner>().Switch(false);
     }
 
     // Update is called once per frame
