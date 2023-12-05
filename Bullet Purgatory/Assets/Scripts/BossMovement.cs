@@ -19,6 +19,8 @@ public class BossMovement : MonoBehaviour
     public bool moving = false;
     public int spawnPos = 0;
 
+    public GameObject playerScore;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,7 +83,7 @@ public class BossMovement : MonoBehaviour
         if (bossHealth <= 0)
         {
             Despawn();
-            gameObject.GetComponent<PlayerMovement>().score += scoreValue;
+            playerScore.gameObject.GetComponent<PlayerMovement>().score += scoreValue;
         }
     }
 

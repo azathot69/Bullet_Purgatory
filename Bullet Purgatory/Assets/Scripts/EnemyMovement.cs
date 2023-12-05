@@ -60,7 +60,7 @@ public class EnemyMovement : MonoBehaviour
     //The amount the player recieves when they destroy this enemy.
     public int scoreValue;
 
-
+    public GameObject playerScore;
 
 
     // Start is called before the first frame update
@@ -143,7 +143,7 @@ public class EnemyMovement : MonoBehaviour
         if (health <= 0)
         {
             Despawn();
-            gameObject.GetComponent<PlayerMovement>().score += scoreValue;
+            playerScore.GetComponent<PlayerMovement>().score += scoreValue;
 
         }
 
