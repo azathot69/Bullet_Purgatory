@@ -65,16 +65,16 @@ public class PlayerMovement : MonoBehaviour
         switch (other.tag)
         {
             default:
-                Debug.Log("Something Hit the player!");
                 break;
 
-            case "Bullet":
+            case "Enemy Projectile":
                 Debug.Log("A Bullet hit the player!!");
+                other.gameObject.SetActive(false);
                 Respawn();
                 break;
 
             case "Enemy":
-                Debug.Log("A Bullet hit the player!!");
+                Debug.Log("An Enemy hit the player!!");
                 break;
         }
     }
@@ -252,7 +252,12 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(Shooting(fireRate));
             }
         }
+
+
     }
+
+
+
 
     private IEnumerator Shooting(float fireRate)
     {

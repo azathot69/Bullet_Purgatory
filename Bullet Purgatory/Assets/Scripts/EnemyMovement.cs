@@ -137,7 +137,7 @@ public class EnemyMovement : MonoBehaviour
             Despawn();
         }
 
-        if (transform.position.z <= maxZ)
+        if (transform.position.z <= killZ)
         {
             
             Despawn();
@@ -152,11 +152,13 @@ public class EnemyMovement : MonoBehaviour
     {
         switch (other.tag)
         {
-            case "Player Projectile":
+            case "Bullet":
                 other.gameObject.SetActive(false);
                 health--;
                 break;
 
+            default:
+                break;
         }
     }
 
