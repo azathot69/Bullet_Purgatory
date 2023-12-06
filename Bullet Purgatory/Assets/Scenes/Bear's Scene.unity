@@ -443,6 +443,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2001373772484022337, guid: ad227cfbec30a0846b46f38d98b9068f, type: 3}
       propertyPath: canSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001373772484022337, guid: ad227cfbec30a0846b46f38d98b9068f, type: 3}
+      propertyPath: spawnRight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7273464887458284174, guid: ad227cfbec30a0846b46f38d98b9068f, type: 3}
@@ -548,11 +552,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4866514596973854490, guid: 01fc481aee558394492159d2dbc24cf4, type: 3}
       propertyPath: canSpawn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4866514596973854490, guid: 01fc481aee558394492159d2dbc24cf4, type: 3}
       propertyPath: movingUp
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866514596973854490, guid: 01fc481aee558394492159d2dbc24cf4, type: 3}
+      propertyPath: spawnRight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
