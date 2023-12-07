@@ -14,6 +14,10 @@ public class EnemySpawner : MonoBehaviour
 
     public float startX;
 
+    public int level1Spawn;
+    public int level2Spawn;
+    public int level3Spawn;
+
     //How fast enemies spawn
     public float spawnRate;
     public bool canSpawn = true;
@@ -27,6 +31,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject sideSpawner2; //Spawns from the right
     public GameObject playerShip;
     private GameObject tempEnemy;
+
+    //Destroy BG
+    public GameObject plane1;
+    public GameObject plane2;
+    public GameObject plane3;
+
+    public GameObject UserInter;
+    private bool nextLevel = true;
 
     // Start is called before the first frame update
     void Start()
@@ -71,22 +83,29 @@ public class EnemySpawner : MonoBehaviour
         }
         #endregion
 
-        #region Turn on Side SPawn upon Spawning enough enemies
-        if (enemiesSpawned >= 3)
+        #region Turn on Side Spawn upon Spawning enough enemies
+        if (enemiesSpawned >= level1Spawn && enemiesSpawned < level2Spawn)
         {
             sideSpawner1.SetActive(true);
+            plane1.SetActive(false);
+            
+            UserInter.GetComponent<UIManager>().currentLevel = 2;
         }
-        if (enemiesSpawned >= 5)
+        if (enemiesSpawned >= level2Spawn && enemiesSpawned < level3Spawn)
         {
             sideSpawner2.SetActive(true);
+            plane2.SetActive(false);
+            UserInter.GetComponent<UIManager>().currentLevel = 3;
 
         }
-        if (enemiesSpawned >= 10)
+        if (enemiesSpawned >= level3Spawn)
         {
             //Turn off spawns & Summon Boss
             sideSpawner1.SetActive(false);
             sideSpawner2.SetActive(false);
+            plane3.SetActive(false);
             canSpawn = false;
+            UserInter.GetComponent<UIManager>().currentLevel = 4;
 
             //Activate Boss
             bossPrefab.SetActive(true);
@@ -95,18 +114,11 @@ public class EnemySpawner : MonoBehaviour
     }
 
     //Functions
-    public void Switch(bool change)
+    public void GoToNextLevel()
     {
-        switch (change)
-        {
-            case true:
-                canSpawn = true;
-                break;
-
-
-            case false:
-                canSpawn = false;
-                break;
+        if (nextLevel) { 
+            nextLevel = false;
+            UserInter.GetComponent<UIManager>().currentLevel++;
         }
     }
 
