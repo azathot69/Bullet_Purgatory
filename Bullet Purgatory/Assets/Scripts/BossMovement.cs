@@ -87,6 +87,21 @@ public class BossMovement : MonoBehaviour
         }
     }
 
+    //Collision
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Bullet":
+                other.gameObject.SetActive(false);
+                bossHealth--;
+                break;
+
+            default:
+                break;
+        }
+    }
+
     private void Movement()
     {
         switch (spawnPos)
