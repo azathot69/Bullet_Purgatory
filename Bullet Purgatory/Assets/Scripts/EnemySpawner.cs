@@ -18,6 +18,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRate;
     public bool canSpawn = true;
     public GameObject[] enemyPrefabs;
+    public GameObject bossPrefab;
 
     [SerializeField] private int enemiesSpawned;
 
@@ -68,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
         }
         #endregion
 
-        #region
+        #region Turn on Side SPawn upon Spawning enough enemies
         if (enemiesSpawned >= 3)
         {
             sideSpawner1.SetActive(true);
@@ -77,6 +78,16 @@ public class EnemySpawner : MonoBehaviour
         {
             sideSpawner2.SetActive(true);
 
+        }
+        if (enemiesSpawned >= 10)
+        {
+            //Turn off spawns & Summon Boss
+            sideSpawner1.SetActive(false);
+            sideSpawner2.SetActive(false);
+            canSpawn = false;
+
+            //Activate Boss
+            bossPrefab.SetActive(true);
         }
         #endregion
     }

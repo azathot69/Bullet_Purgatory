@@ -128,6 +128,7 @@ MonoBehaviour:
   - {fileID: 2377221572383077526, guid: 0b8924f9aa0bcef40b41eef7bb2d9b3f, type: 3}
   - {fileID: 3121348857524420101, guid: 3e88a3e12490e604984dadc351adad2e, type: 3}
   - {fileID: 3273387681912661905, guid: f416ab71bdcb1904097eeb7a927eb65c, type: 3}
+  bossPrefab: {fileID: 8204673749678969156, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
   enemiesSpawned: 0
   sideSpawner1: {fileID: 7273464887458284174, guid: ad227cfbec30a0846b46f38d98b9068f, type: 3}
   sideSpawner2: {fileID: 738902995754749326, guid: 01fc481aee558394492159d2dbc24cf4, type: 3}
