@@ -223,9 +223,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8567244987006724624}
   - component: {fileID: 6606817554533125199}
+  - component: {fileID: -5602555165829767822}
   m_Layer: 0
   m_Name: Enemy 1
-  m_TagString: Enemy 1
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,21 +266,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3355433189564712464, guid: 9e643c3d34e75074ea5899d29e7ecf76, type: 3}
   player: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
-  bulletLife: 1
-  bulletNum: 0
-  bulletSpeed: 1
-  health: 1
+  bulletLife: 10
+  bulletNum: 5
+  bulletSpeed: 10
   spawnerType: 0
-  firingRate: 1
-  moveType: 0
-  speed: 0
+  firingRate: 3
+  health: 3
+  killZ: -40
+  killXRight: 40
+  killXLeft: -40
+  Movement: 1
+  speed: 5
   minX: 0
   maxX: 0
   minZ: 0
   maxZ: 0
   movingRight: 0
-  retreat: 0
+  movingDown: 0
   startingX: 0
+  scoreValue: 10
+--- !u!65 &-5602555165829767822
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377221572383077526}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.6454926, y: 1, z: 10.290981}
+  m_Center: {x: 0.048057556, y: 0, z: 1.05725}
 --- !u!1 &4474269701520749267
 GameObject:
   m_ObjectHideFlags: 0
