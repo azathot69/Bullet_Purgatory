@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 8847475350208736299}
   - component: {fileID: 3808427008629909963}
   - component: {fileID: 345090901643063518}
-  - component: {fileID: 8430018555020813893}
+  - component: {fileID: 8806474626109074234}
   m_Layer: 0
   m_Name: Enemy Bullet
-  m_TagString: Enemy Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,10 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6cacc4def1de94ebe46cc93a4070f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletLife: 1
-  rotation: 0
-  speed: 1
---- !u!54 &8430018555020813893
+--- !u!54 &8806474626109074234
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
