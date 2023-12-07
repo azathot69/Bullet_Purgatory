@@ -25,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
     //Other Spawners
     [SerializeField] private GameObject sideSpawner1; // Spawns from the Left
     [SerializeField] private GameObject sideSpawner2; //Spawns from the right
+    public GameObject playerShip;
+    private GameObject tempEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -122,7 +124,9 @@ public class EnemySpawner : MonoBehaviour
             int rand = Random.Range(0, enemyPrefabs.Length);
             GameObject enemyToSpawn = enemyPrefabs[rand];
             enemiesSpawned++;
-            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            tempEnemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            tempEnemy.GetComponent<EnemyMovement>().playerScore = playerShip;
+
         }
 
     }

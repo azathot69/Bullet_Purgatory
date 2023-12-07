@@ -489,7 +489,7 @@ MonoBehaviour:
   bulletSpeed: 10
   spawnerType: 1
   firingRate: 0.5
-  health: 7
+  health: 3
   killZ: -40
   killXRight: 40
   killXLeft: -40
@@ -503,6 +503,7 @@ MonoBehaviour:
   movingDown: 0
   startingX: 0
   scoreValue: 50
+  playerScore: {fileID: 5293137323980448899, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
 --- !u!65 &3814318199109124726
 BoxCollider:
   m_ObjectHideFlags: 0
