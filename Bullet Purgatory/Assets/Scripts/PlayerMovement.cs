@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        //Player fires bullet
+        //Player fires bullet in direction of pressed key
         if (Input.GetKey("up"))
         {
 
