@@ -30,6 +30,9 @@ public class EnemySpawner : MonoBehaviour
     {
         startX = transform.position.x;
         StartCoroutine(Spawner());
+
+        sideSpawner1.SetActive(false);
+        sideSpawner2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -68,11 +71,11 @@ public class EnemySpawner : MonoBehaviour
         #region
         if (enemiesSpawned >= 3)
         {
-            sideSpawner1.GetComponent<SideSpawner>().canSpawn = true;
+            sideSpawner1.SetActive(true);
         }
         if (enemiesSpawned >= 5)
         {
-            sideSpawner2.GetComponent<SideSpawner>().canSpawn = true;
+            sideSpawner2.SetActive(true);
 
         }
         #endregion

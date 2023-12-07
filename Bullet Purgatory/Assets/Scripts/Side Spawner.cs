@@ -20,6 +20,7 @@ public class SideSpawner : MonoBehaviour
     public bool canSpawn = true;
     public GameObject[] enemyPrefabs;
     public bool spawnRight;
+    public bool startSpawn = true;
 
     [SerializeField] private int enemiesSpawned;
 
@@ -62,37 +63,16 @@ public class SideSpawner : MonoBehaviour
         }
         #endregion
 
-        #region
-        if (enemiesSpawned >= 5)
+        if (startSpawn)
         {
-            canSpawn = false;
-        }
-        #endregion
-    }
-
-    //Functions
-    public void Switch(bool change)
-    {
-        switch (change)
-        {
-            case true:
-                canSpawn = true;
-                break;
-
-
-            case false:
-                canSpawn = false;
-                break;
+            StartCoroutine(Spawner());
+            startSpawn = false;
         }
     }
-
-
     //IEnumerators
     private IEnumerator Spawner()
     {
-
         WaitForSeconds wait = new WaitForSeconds(spawnRate);
-
         while (canSpawn == true)
         {
             
