@@ -83,7 +83,7 @@ public class BossMovement : MonoBehaviour
         if (bossHealth <= 0)
         {
             Despawn();
-            playerScore.gameObject.GetComponent<PlayerMovement>().score += scoreValue;
+            
         }
     }
 
@@ -217,7 +217,7 @@ public class BossMovement : MonoBehaviour
     private void Despawn()
     {
         this.gameObject.SetActive(false);
-
+        playerScore.gameObject.GetComponent<PlayerMovement>().score += scoreValue;
     }
 
     /// <summary>
