@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1798940689497780604, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
       propertyPath: speed
-      value: 35
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -1798940689497780604, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
       propertyPath: bossHealth
@@ -480,7 +480,16 @@ PrefabInstance:
     - {fileID: 1529198281952227169, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 347899738338599612, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2034359953}
+    - targetCorrespondingSourceObject: {fileID: 7067658992335907857, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 718733146}
+    - targetCorrespondingSourceObject: {fileID: 5135860431325006841, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1324591008}
   m_SourcePrefab: {fileID: 100100000, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
 --- !u!1001 &668865556
 PrefabInstance:
@@ -539,6 +548,29 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9050a01c8d59ab48ae2e605a65718a7, type: 3}
+--- !u!1 &718733141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7067658992335907857, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+  m_PrefabInstance: {fileID: 526397127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &718733146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718733141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a596900d937baa46a2271ba0004f41f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 3355433189564712464, guid: 05b01b84f78d6a8499351fb9af25ad9e, type: 3}
+  bulletLife: 7
+  bulletNum: 0
+  bulletSpeed: 10
+  spawnerType: 2
+  firingRate: 1
 --- !u!1 &916002685 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7273464887458284174, guid: ad227cfbec30a0846b46f38d98b9068f, type: 3}
@@ -676,6 +708,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5381427652135690345, guid: 992696cb23248044c9bab7b0207ad95b, type: 3}
   m_PrefabInstance: {fileID: 916119574}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1324591003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5135860431325006841, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+  m_PrefabInstance: {fileID: 526397127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1324591008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324591003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8091937de47fb644db12d491ba2e1b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 3355433189564712464, guid: 15a5deba2d77bb74e832bbefa703db82, type: 3}
+  bulletLife: 9
+  bulletNum: 5
+  bulletSpeed: 5
+  spawnerType: 1
+  firingRate: 0.2
 --- !u!1001 &1366044519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1172,6 +1227,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 883173611688363249, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2066104868855924294, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.54
@@ -1216,6 +1275,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3458008307347533464, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: lives
       value: 3
@@ -1241,6 +1304,29 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+--- !u!1 &2034359948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 347899738338599612, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+  m_PrefabInstance: {fileID: 526397127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2034359953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034359948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff0e80440ef001438ff80c973eebc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 3355433189564712464, guid: 9e643c3d34e75074ea5899d29e7ecf76, type: 3}
+  bulletLife: 9
+  bulletNum: 10
+  bulletSpeed: 10
+  spawnerType: 0
+  firingRate: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
