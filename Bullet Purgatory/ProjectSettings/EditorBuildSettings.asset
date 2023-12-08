@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 824d82fe1c1360c4b858d8a1377150ff
   - enabled: 1
-    path: Assets/Scenes/Win Screen.unity
-    guid: 84834e8eb41756047968fe905d75fa07
+    path: Assets/Scenes/Controls Screen.unity
+    guid: 16f763986c4a5f249b7988dadda4c4d8
   - enabled: 1
     path: Assets/Scenes/Game Over.unity
     guid: 413c27ab7fb136a4c893f9b67796b360
+  - enabled: 1
+    path: Assets/Scenes/Win Screen.unity
+    guid: 84834e8eb41756047968fe905d75fa07
   - enabled: 1
     path: Assets/Scenes/Win.unity
     guid: 5e70d37318212844ab2677c0240c3eb8
