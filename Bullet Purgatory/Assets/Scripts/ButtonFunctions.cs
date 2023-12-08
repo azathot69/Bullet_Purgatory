@@ -11,6 +11,11 @@ public class ButtonFunctions : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void controls()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void CloseGame()
     {
         Debug.Log("Close Game");
