@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465794, g: 0.49641478, b: 0.5748201, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641424, b: 0.5748196, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -397,8 +397,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1798940689497780604, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+      propertyPath: maxX
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -1798940689497780604, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+      propertyPath: maxZ
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -1798940689497780604, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+      propertyPath: minX
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -1798940689497780604, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+      propertyPath: minZ
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -1798940689497780604, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
       propertyPath: speed
-      value: 5
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: -1798940689497780604, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
+      propertyPath: bossHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: -1798940689497780604, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
       propertyPath: playerScore
@@ -406,7 +426,7 @@ PrefabInstance:
       objectReference: {fileID: 1131689216}
     - target: {fileID: 2297902980556497440, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.075157
+      value: -17.8
       objectReference: {fileID: 0}
     - target: {fileID: 2297902980556497440, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2297902980556497440, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 70.79792
+      value: 45.5
       objectReference: {fileID: 0}
     - target: {fileID: 2297902980556497440, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -456,7 +476,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1529198281952227169, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -884,7 +905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5630166646776171866, guid: ce3c4969e3317f4428d866e1afe45ac9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9093983491217793329, guid: ce3c4969e3317f4428d866e1afe45ac9, type: 3}
       propertyPath: m_LocalPosition.x

@@ -145,7 +145,7 @@ public class BossMovement : MonoBehaviour
                 Debug.Log("Upper West to East");
                 newRotation = new Vector3(0, 270, 0);
                 transform.eulerAngles = newRotation;
-                transform.position = new Vector3(-57f, 0, 10);
+                transform.position = new Vector3(-57f, 0, 20);
                 transform.eulerAngles = newRotation;
                 spawnPos = 0;
                 break;
@@ -154,7 +154,7 @@ public class BossMovement : MonoBehaviour
                 Debug.Log("Lower West to East");
                 newRotation = new Vector3(0, 270, 0);
                 transform.eulerAngles = newRotation;
-                transform.position = new Vector3(-57f, 0, -17);
+                transform.position = new Vector3(-57f, 0, -5);
                 spawnPos = 0;
                 break;
 
@@ -178,7 +178,7 @@ public class BossMovement : MonoBehaviour
                 Debug.Log("Upper East to West");
                 newRotation = new Vector3(0, 90, 0);
                 transform.eulerAngles = newRotation;
-                transform.position = new Vector3(65, 0, -5);
+                transform.position = new Vector3(65, 0, 3);
                 spawnPos = 2;
                 break;
 
@@ -186,7 +186,7 @@ public class BossMovement : MonoBehaviour
                 Debug.Log("Lower East to West");
                 newRotation = new Vector3(0, 90, 0);
                 transform.eulerAngles = newRotation;
-                transform.position = new Vector3(65, 0, -28);
+                transform.position = new Vector3(65, 0, -17);
                 spawnPos = 2;
                 break;
 
