@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Controls the boss movement and shooting pattern
+*/
+
 public class BossShooting : MonoBehaviour
 {
     enum SpawnerType { Burst, Spin, DownShot, Triad }
@@ -26,11 +32,6 @@ public class BossShooting : MonoBehaviour
 
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

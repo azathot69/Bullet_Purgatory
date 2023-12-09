@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Controls the bullet's movement and lifespan
+*/
+
 public class PlayerBullet : MonoBehaviour
 {
     public float speed = 5.0f;

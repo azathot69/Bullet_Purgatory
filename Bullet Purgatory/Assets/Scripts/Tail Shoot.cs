@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Allows the tail of the boss to shoot bullets
+*/
+
 public class TailShoot : MonoBehaviour
 {
     enum SpawnerType { Burst, Spin, DownShot, Triad }
@@ -25,12 +31,6 @@ public class TailShoot : MonoBehaviour
     private bool canShoot = true;
 
     #endregion
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

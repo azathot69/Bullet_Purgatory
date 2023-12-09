@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Controls the Dynamic UI of the game
+*/
+
 public class UIManager : MonoBehaviour
 {
     public int currentLevel = 1;
@@ -11,9 +17,6 @@ public class UIManager : MonoBehaviour
     public TMP_Text playerHP;
     public TMP_Text playerScore;
     public TMP_Text level;
-
-    //Need this variable made
-    //public TMP_Text level;
 
     public PlayerMovement playerMovement;
 

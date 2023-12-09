@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Controls bullet movement and lifespawn
+*/
+
 public class Bullet : MonoBehaviour
 {
     public float bulletLife = 1f;

@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Controls the boss' movement
+*/
 
 public class BossMovement : MonoBehaviour
 {
@@ -83,7 +90,7 @@ public class BossMovement : MonoBehaviour
         if (bossHealth <= 0)
         {
             Despawn();
-            
+            SceneManager.LoadScene(3);
         }
     }
 
@@ -102,6 +109,9 @@ public class BossMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Moves the boss
+    /// </summary>
     private void Movement()
     {
         switch (spawnPos)
@@ -136,6 +146,9 @@ public class BossMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Controls boss spawn point
+    /// </summary>
     private void SpawnPoint()
     {
 
@@ -213,7 +226,9 @@ public class BossMovement : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Despawns the boss and takes player to win screen
+    /// </summary>
     private void Despawn()
     {
         this.gameObject.SetActive(false);

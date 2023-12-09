@@ -5,6 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Allows enemies to be spawned at the sides
+*/
+
 public class SideSpawner : MonoBehaviour
 {
     //Variables

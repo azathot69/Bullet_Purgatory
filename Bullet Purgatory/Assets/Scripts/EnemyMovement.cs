@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-/// <summary>
-/// Acuna, Joseph
-/// [11/14/23]
-/// Controlls the enemy's behavior
-/// </summary>
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Allows the enemies to be hit, move, and shoot bullets
+*/
+
 public class EnemyMovement : MonoBehaviour
 {
 
@@ -180,7 +181,9 @@ public class EnemyMovement : MonoBehaviour
 
     //Functions
 
-    //Despawns itself
+    /// <summary>
+    /// Despawn when reaching 0 HP
+    /// </summary>
     private void Despawn()
     {
         gameObject.SetActive(false);

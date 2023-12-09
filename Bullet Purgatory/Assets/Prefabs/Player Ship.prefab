@@ -265,7 +265,7 @@ MonoBehaviour:
   shootBackward: 0
   shootRight: 0
   shootLeft: 0
-  lives: 0
+  lives: 5
   playerProjectilePrefab: {fileID: 4822819024359216494, guid: 66c2daaed7412a24d9766b7b68e62523, type: 3}
   shootingPoint: {fileID: 2066104868855924294}
   bombs: 0

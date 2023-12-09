@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Allows the wings of the boss to shoot bullets
+*/
+
 public class WingsShoot : MonoBehaviour
 {
     enum SpawnerType { Burst, Spin, DownShot, Triad }
@@ -25,12 +31,6 @@ public class WingsShoot : MonoBehaviour
     private bool canShoot = true;
 
     #endregion
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

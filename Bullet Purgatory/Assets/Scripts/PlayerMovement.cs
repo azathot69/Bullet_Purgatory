@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Acuna, Joseph
-/// [11/14/23]
-/// Controls the player's movement
-/// </summary>
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Allows the player to be hit, move, and shoot bullets
+*/
 public class PlayerMovement : MonoBehaviour
 {
     //Variables
@@ -58,6 +59,12 @@ public class PlayerMovement : MonoBehaviour
     {
         //Controls player movement
         Movement();
+
+        //Go to game over if Lives <= 0
+        if (lives <= 0)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     //Player collision
@@ -81,6 +88,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //Functions
+
+    /// <summary>
+    /// Controls the player's movements
+    /// </summary>
     private void Movement()
     {
         //Player goes up
@@ -193,6 +204,9 @@ public class PlayerMovement : MonoBehaviour
         //Player shoots bomb
     }
 
+    /// <summary>
+    /// Removes a player's lives when hit with an enemy bullet
+    /// </summary>
     private void Respawn()
     {
         if (lives > 0)
@@ -203,24 +217,13 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             //Go to game over screen
+            SceneManager.LoadScene(2);
         }
     }
 
-    //Fire a bomb, clears the screen
-    private void FireBomb()
-    {
-        if (bombs > 0)
-        {
-            //Fire Bombs
-            bombs--;
-        }
-        else
-        {
-            //Don't do Anything
-            Debug.Log("no mo' bombs!");
-        }
-    }
-
+    /// <summary>
+    /// Shoots player's bullets at various angles
+    /// </summary>
     private void ShootBullet()
     {
         if (canShoot)

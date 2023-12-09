@@ -257,7 +257,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.2582917, g: 0.06977572, b: 0.3018868, a: 1}
+  m_Color: {r: 0.78708124, g: 0.5166429, b: 0.8490566, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -482,7 +482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8204673749678969156, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1529198281952227169, guid: aa4e92c4a0e0d8b438009e6ec54618a0, type: 3}
@@ -976,7 +976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5630166646776171866, guid: ce3c4969e3317f4428d866e1afe45ac9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9093983491217793329, guid: ce3c4969e3317f4428d866e1afe45ac9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1253,7 +1253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.3
       objectReference: {fileID: 0}
     - target: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1261,7 +1261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.7
       objectReference: {fileID: 0}
     - target: {fileID: 2271241004539679286, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1296,8 +1296,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+      propertyPath: maxZ
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+      propertyPath: minX
+      value: -42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
+      propertyPath: minZ
+      value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: lives
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4206465666389108872, guid: ae0e7732641b1e449b92a82336cfb139, type: 3}
       propertyPath: score

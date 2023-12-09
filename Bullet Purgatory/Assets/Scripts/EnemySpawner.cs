@@ -4,6 +4,12 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/*
+[Acuna, Joseph] [Hernandez, Max]
+[12/06/23]
+Spawns enemies and controls other spawners + boss spawn
+*/
+
 public class EnemySpawner : MonoBehaviour
 {
     //Variables
@@ -111,15 +117,6 @@ public class EnemySpawner : MonoBehaviour
             bossPrefab.SetActive(true);
         }
         #endregion
-    }
-
-    //Functions
-    public void GoToNextLevel()
-    {
-        if (nextLevel) { 
-            nextLevel = false;
-            UserInter.GetComponent<UIManager>().currentLevel++;
-        }
     }
 
 
